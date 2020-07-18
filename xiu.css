@@ -1,0 +1,26 @@
+/*测试文件*/
+h1{
+	text-align:center;
+	font-family:黑体;
+}
+
+h2{
+	font-family:宋体;
+	font-size:16pt;
+	font-weight:bold;
+}
+
+h3{
+	text-indent:6%;
+}
+
+.divcss1{
+	font-family:Times New Rommon;
+	text-indent:2.1%;
+}
+
+.divcss2{
+	font-family:宋体;
+	font-size:13pt;
+	text-indent:2%;
+}
