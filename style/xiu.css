@@ -8,6 +8,9 @@ h2{
 	font-family:宋体;
 	font-size:16pt;
 	font-weight:bold;
+	text-align:justify;
+	padding:0.2em 0.2em 1em 2em;
+	width:380px;
 }
 
 h3{
@@ -17,7 +20,19 @@ h3{
 .divcss1{
 	font-family:Times New Roman;
 	text-indent:2.1%;
+	margin:50px 1000px 500px 500px;
 }
+.divtext1{
+	p{
+		padding:0.2em 0.2em 1em 2em;
+	}
+	
+}
+
+.div1divtext1{
+	border:5px solid red;
+}
+
 
 .divcss2{
 	font-family:宋体;
