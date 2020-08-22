@@ -1,0 +1,52 @@
+#div1 p{
+	color:blue;
+}
+
+/*类选择器选择div，中id=div2的 span标签类型*/
+#div2 span{
+	color:green;
+}
+
+/*设置body的 边缘-margin*/
+body{
+	margin: 0;
+}
+
+/*主体部分  width宽度100%，height高度950px像素，背景颜色黑灰色*/
+#container{
+	width: 100%;
+	height: 950px;
+	background-color: darkgray;
+}
+
+/*头部header*/
+#haeding{
+	width: 100%;
+	height: 10%;
+	background-color:aqua;
+}
+
+/*content_menu*/
+#content_menu{
+	width: 30%;
+	height: 80%;
+	background-color: aquamarine;
+	float: left;
+}
+
+/*body*/
+#content_body{
+	width: 70%;
+	height: 80%;
+	background-color: blueviolet;
+	float: right;
+}
+
+/*footing*/
+/*clear清除上面的两个浮动的遮挡效果，该效果被上面的两个浮动遮挡，只能看到原网页body的底色*/
+#footing{
+	width:100%;
+	height:10%;
+	background-color: black;
+	clear: both;
+}

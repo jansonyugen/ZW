@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>index.html</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<!--标题行若重名，则按照统一大小垂直列一次排列-->
+<body>
+<h1>标题1</h1>
+<h1>标题1</h1>
+<h1>标题1</h1>
+<h2>标题2</h2>
+<h3>标题3</h3>
+<h4>标题4</h4>
+<p>这是段落p</p>
+<!--cellpadding表示表格大小,cellspacing表示单元格边距-->
+<table border=1 cellpadding="10" cellspacing="0" bgcolor="FFFFCC" >
+	<caption>caption表头</caption>
+	<tr>
+		<th>th表头1</th>
+		<th>th表头2</th>
+		<th>th表头3</th>
+	<tr>
+		<td>trow1,单元格td1</td>
+		<td>trow1,单元格td2</td>
+		<td>trow1,单元格td3</td>
+	</tr>
+	<tr>
+		<td>trow2,单元格td1</td>
+		<td>trow2,单元格td2</td>
+		<td>trow2,单元格td3</td>
+	</tr>
+	<tr>
+		<td>trow3,单元格td1</td>
+		<td>trow3,单元格td2</td>
+		<td>trow3,单元格td3</td>
+	</tr>
+</table>
+<!--ul或ol与li的关系-->
+<p>无序列表ul</p>
+<!--ul属性：disc实体‘·’圆点，circle空心圆点○,square方形实体-->
+<ul type="circle">
+	<li>line1</li>
+	<li>line2</li>
+	<li>line3</li>
+</ul>
+<br/>
+<p>有序列表ol</p>
+<!--ol属性：A按大写的A排序,a小写的a排序,l罗马数字排序,i小写罗马数字排序,start，默认不更改则为数字排序，start定义从哪个序号开始排序-->
+<ol type="A">
+	<li>line1</li>
+	<li>line2</li>
+	<li>line3</li>
+</ol>
+<!--嵌套列表，一层套一层-->
+<ul>
+	<li>line1</li>
+	<ul>
+		<li>嵌套无序列表1</li>
+		<li>嵌套无序列表</li>
+		<li>嵌套无序列表</li>
+	</ul>
+	<li>line2</li>
+	<ul>
+		<li>嵌套无序列表2</li>
+		<li>嵌套无序列表</li>
+		<li>嵌套无序列表</li>
+	</ul>
+	<li>line3</li>
+	<ul>
+		<li>嵌套无序列表3</li>
+		<li>嵌套无序列表</li>
+		<li>嵌套无序列表</li>
+	</ul>
+</ul>
+
+<ol start="4">
+	<li>line1</li>
+	<ol type="I">
+		<li>嵌套有序列表1</li>
+		<li>嵌套有序列表</li>
+		<li>嵌套有序列表</li>
+	</ol>
+
+	<li>line2</li>
+	<ol type="i">
+		<li>嵌套有序列表2</li>
+		<li>嵌套有序列表</li>
+		<li>嵌套有序列表</li>
+	</ol>
+	<li>line3</li>
+	<ul>
+		<li>嵌套无序列表2</li>
+		<li>嵌套无序列表</li>
+		<li>嵌套无序列表</li>
+	</ul>
+</ol>
+
+<!--自定义列表-->
+<dl>
+	<dt>hello world</dt>
+	<dd>每一门新的语言都会打印一个hello world</dd>
+	<dt>hello world</dt>
+	<dd>每一门新的语言都会打印一个hello world</dd>
+	<dt>hello world</dt>
+	<dd>每一门新的语言都会打印一个hello world</dd>
+</dl>
+
+<!--HTML块-->
+<h2>HTML块</h2>
+<ol>
+	<li>HTML块元素</li>
+	<dd>块元素在显示时，通常会以新行开始</dd>
+	<dd>如：< h1 >、< p >、< ul > </dd>
+	<li>HTML内联元素</li>
+	<dd>内联元素通常不会以新行开始</dd>
+	<dd>如：< b >、< a >、< img > </dd>
+	<li>HTML< div >元素</li>
+	<dd>< div >元素也被成为块元素，其主要是组合HTML元素的容器</dd>
+	<li>HTML< span >元素</li>
+	<dd>< span >元素是内联元素，可作为文本的容器</dd>
+</ol>
+
+<!-- 块 -->
+<p>p元素“另起的新行”</p>
+<h1>h1标题，"同上"</h1>
+
+<!-- 内联元素 -->
+<b>这是一个加重标签-< b >[注：不换行，内联元素]</b>
+<a>这是一个超链接标签-< a >[注：不换行，内联元素]</a>
+
+<!-- div元素 -->
+<!-- css的类选择器，选择div属性且id为div1的p块元素的样式 -->
+<!-- 表达为#div1 p{
+	color:blue;
+} -->
+<div id="div1">
+	<p>这是div内的< p >块元素</p>
+	<a>这是div内的< a >内联元素</a>
+</div>
+
+<!-- HTML< span >元素 -->
+<div id="div2">
+	<p><span>这是一个测试的效果< span ></span>< p ></p>
+</div>
+
+<div id="container">
+	<div id="haeding">头部</div>
+	<div id="content_menu">内容菜单</div>
+	<div id="content_body">内容主体</div>
+	<div id="footing">底部</div>
+</div>
+<div>
+	<br/>
+	<p>~~~分割线~~~</p>
+	<br/>
+</div>
+
+
+<table width="100%" height="950px" style="background-color: darkgray;">
+	<!-- colspan合并两个单元格 -->
+	<tr>
+	<td colspan="3" width="100%" height="10%" style="background-color: aqua;">这是头部</td>
+	</tr>
+
+	<tr>
+		<td width="25%" height="80%" style="background-color:blue;">
+			<ul type="square">
+				<li>IOS</li>
+				<li>ANDROID</li>
+				<li>HTML5</li>
+			</ul>
+		</td>
+		<td width="55%" height="80%" style="background-color:blueviolet;">主体</td>
+		<td width="20%" height="80%" style="background-color:deeppink ;">右菜单栏</td>
+	</tr>
+	<tr>
+		<td width="100%" height="10%" colspan="3" style="background-color:darkcyan;">这是底部</td>
+	</tr>
+</table>
+</body>
+</html>
