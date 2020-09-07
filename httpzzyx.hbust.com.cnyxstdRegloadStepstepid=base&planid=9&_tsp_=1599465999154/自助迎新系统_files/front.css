@@ -1,0 +1,19 @@
+.m404{width: 292px;margin: 80px auto 0px auto;height: 138px;background-image: url(../image/404.jpg);background-repeat: no-repeat;background-position: left top;padding: 138px 200px 0px 0px;}
+.m404 li{width: 100%;text-align: right;color: #666;font-size: 14px;line-height: 25px;}
+.m404 li img{margin: 10px 0px;}
+.xian{ border-bottom:1px solid #e4e4e4; padding:10px 0px 15px 0px; margin-bottom:15px;}
+.divlan{width:45px; border:2px solid #d5edff; padding:0px 5px; line-height:20px; color:#308cdd;}
+.divred{width:45px;border:2px solid #ff7979; padding:0px 5px;line-height:20px; color:#ff7979;}
+.divgreen{width:45px;border:2px solid green; padding:0px 5px;line-height:20px; color:green;}
+.m404 li{width:100%;text-align:right; color:#666;font-size:14px; line-height:25px;}
+.m404 li img{ margin:10px 0px;}
+.m401_table{margin:150px auto 0px auto;}
+.m401_zred{color:#ff0000;font-size:18px;line-height:24px;}	
+.m401_table td{ padding:2px 0px;}
+.m401_zh{ color:#666;font-size:14px; line-height:20px; background:url(../image/xf.gif) no-repeat left center; text-indent:20px;}
+.m401_table td a{ text-decoration:none; color:#36C;}
+.div_order{ padding:8px; font-size:14px; border:1px solid #eae3c2; background:#fffbea;}
+.lb_order{ margin:5px 0 0 0;}
+.lb_order li{ line-height:35px; text-indent:8px; font-size:14px; border-bottom:1px solid #efefef;}
+td a{color:#45c4ff;text-decoration: none;}
+td a:hover{text-decoration: underline}

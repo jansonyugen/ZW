@@ -1,0 +1,474 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0084)http://zzyx.hbust.com.cn/yx/stdReg/loadStep?stepid=base&planid=9&_tsp_=1599465999154 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>自助迎新系统</title>
+<link href="./自助迎新系统_files/layout.css" rel="stylesheet" type="text/css">
+<link href="./自助迎新系统_files/front.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" href="./自助迎新系统_files/validate.css">
+<link rel="stylesheet" href="./自助迎新系统_files/fcbklistselection.css">
+<link rel="stylesheet" href="./自助迎新系统_files/om-all.css">
+<link rel="stylesheet" href="./自助迎新系统_files/iconfont.css">
+<link rel="stylesheet" href="./自助迎新系统_files/colorbox.css">
+
+<link rel="stylesheet" href="./自助迎新系统_files/loading.css">
+
+
+<script type="text/javascript" src="./自助迎新系统_files/jquery.js.下载"></script>
+<script type="text/javascript" src="./自助迎新系统_files/jquery.validate.min.js.下载"></script>
+<script type="text/javascript" src="./自助迎新系统_files/additional-methods.min.js.下载"></script>
+<script type="text/javascript" src="./自助迎新系统_files/messages_zh.js.下载"></script>
+<script type="text/javascript" src="./自助迎新系统_files/dimensions.js.下载"></script>
+<script type="text/javascript" src="./自助迎新系统_files/suggest.js.下载"></script>
+<script type="text/javascript" src="./自助迎新系统_files/train.js.下载"></script>
+<link rel="stylesheet" href="./自助迎新系统_files/train.css">
+<script type="text/javascript" src="./自助迎新系统_files/WdatePicker.js.下载"></script><link href="./自助迎新系统_files/WdatePicker.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="./自助迎新系统_files/om-core.js.下载"></script>
+<script type="text/javascript" src="./自助迎新系统_files/om-mouse.js.下载"></script>
+<script type="text/javascript" src="./自助迎新系统_files/om-combo.js.下载"></script>
+<script type="text/javascript" src="./自助迎新系统_files/om-draggable.js.下载"></script>
+<script type="text/javascript" src="./自助迎新系统_files/om-position.js.下载"></script>
+<script type="text/javascript" src="./自助迎新系统_files/om-messagebox.js.下载"></script>
+<script type="text/javascript" src="./自助迎新系统_files/om-button.js.下载"></script>
+<script type="text/javascript" src="./自助迎新系统_files/om-dialog.js.下载"></script>
+<script type="text/javascript" src="./自助迎新系统_files/jquery.colorbox.js.下载"></script>
+<script type="text/javascript" src="./自助迎新系统_files/base.js.下载"></script>
+<script type="text/javascript" src="./自助迎新系统_files/jquery.qrcode.min.js.下载"></script>
+<style type="text/css">
+.om-combo{height: 30px;border: 1px solid #e4e4e4;margin:1px;}
+.om-combo .om-combo-trigger {cursor: pointer;display: inline-block;height: 30px;vertical-align: top;width: 25px;background-color: #e6e6e6;}
+.om-combo input{height: 28px;padding: 0 5px;width:125px;}
+.om-combo-trigger{background: url("/yx/image/ui/combo-trigger.png") no-repeat scroll 0px 50% transparent;}
+.om-state-default .om-combo-trigger, .om-state-default .om-calendar-trigger {background-position:0px 0;}
+.om-state-hover .om-combo-trigger, .om-state-hover .om-calendar-trigger {background-position:-25px 0;}
+.om-state-focus .om-combo-trigger, .om-state-focus .om-calendar-trigger {background-position:-25px 0;}
+.om-state-active .om-combo-trigger, .om-state-active .om-calendar-trigger {background-position:-50px 0;}
+
+
+.dialog_cont{padding-left:60px;}
+.dialog_cont .message{height:32px;line-height:32px;padding-left:52px;margin-bottom:30px;font-weight:400;background:url("/yx/image/tips.gif") no-repeat left }
+.dialog_cont p{line-height:20px;}
+
+</style>
+<script type="text/javascript">
+	function addNoCache(url){
+		var timestamp = (new Date()).valueOf();
+		if (url.indexOf("?") >= 0) {
+			url = url + "&_tsp_=" + timestamp;
+		} else {
+			url = url + "?_tsp_=" + timestamp;
+		}
+		return url;
+	}
+	function isLogin(){
+		$.ajax({
+			type:"POST",
+			url:"/yx/api/validateLogin",
+			cache:false,
+			async:false,
+			dataType:"json",
+			success: function(dataResult){
+				if(!dataResult){
+					window.location.href="/yx/stdReg";
+				}
+			}
+		});
+	}
+	
+	function showWait(){
+		$.omMessageBox.waiting({
+	        title:'请等待',
+	        content:'服务器正在处理请求'
+	     });
+	}
+	
+	function alertMessage(type,message){
+		$.omMessageBox.alert({
+			type:type,
+			content:message,
+	        onClose:function(v){}
+	    });
+	}
+	function closeWait(){
+		$.omMessageBox.waiting('close');
+	}
+	function gohelp(url){
+		isLogin();
+		$("#helpFrame").attr("src", addNoCache(url));
+		$("#helpDialog").omDialog({
+			title:'提示信息',
+			autoOpen: false,
+			height: 450,
+			width:650
+		});
+		$("#helpDialog").omDialog('open');
+	}
+	function loadStep(stepid,planid){
+		showWait();
+		var url =addNoCache('/yx/stdReg/loadStep?stepid='+stepid+'&planid='+planid);
+		$("#hiddenForm").attr("action",url);
+		$("#hiddenForm").submit();
+	}
+	function edit(stepid,planid){
+		showWait();
+		isLogin();
+		
+		var url =addNoCache('/yx/stdReg/loadStep?stepid='+stepid+'&planid='+planid+'&isView=false');
+		$("#hiddenForm").attr("action",url);
+		$("#hiddenForm").submit();
+	}
+	
+	function loadNext(stepid,planid){
+		showWait();
+		isLogin();
+		var url =addNoCache('/yx/stdReg/loadNext?stepid='+stepid+'&planid='+planid);
+		$("#hiddenForm").attr("action",url);
+		$("#hiddenForm").submit();
+	}
+	function submitHidden(url){
+		showWait();
+		$("#hiddenForm").attr("action",url);
+		$("#hiddenForm").submit();
+	}
+</script><script type="text/javascript">
+	$().ready(function(){
+		$('#jjknrdDiv').omDialog({
+			autoOpen: false,
+			height: 400,
+			width:350,
+			modal: true,
+			onClose : function(event) {
+			}
+		});
+	});
+
+	function openJjknrd(){
+		document.getElementById("openFrame").src = addNoCache("/yx/stdReg/showJjknrd");
+		$( "#jjknrdDiv").omDialog({
+			title: "家庭经济困难学生认定申请",
+			width:"48%"
+		});
+		$( "#jjknrdDiv").omDialog('open');
+	}
+
+	function closeJjknrd(){
+		$( "#jjknrdDiv").omDialog('close');
+	}
+</script>
+</head>
+<body>
+<div class="header">
+	<div class="top">
+		<div class="logo"><img src="./自助迎新系统_files/logo.png" class="png" width="455" height="87"></div>
+		<div class="top_right">
+			<div class="user">
+				<span>于根，欢迎你</span><span><a href="http://zzyx.hbust.com.cn/"><img src="./自助迎新系统_files/home.png" width="27" height="40"></a></span>
+				<span><a href="http://zzyx.hbust.com.cn/yx/logout"><img src="./自助迎新系统_files/exit.png" width="27" height="40"></a></span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="wrapper">
+	<div class="arrowlistmenu leftbar">
+		<ul class="menuson">
+				<li class="active">
+				<i id="i"></i>
+				<cite id="cite7"></cite><a href="javascript:loadStep(&#39;base&#39;,&#39;9&#39;);" target="_self">个人信息</a>
+				</li>
+				<li class="default">
+				
+				<cite id="cite4"></cite><a href="javascript:loadStep(&#39;room&#39;,&#39;9&#39;);" target="_self">选宿舍</a>
+				</li>
+				<li class="default">
+				
+				<cite id="cite9"></cite><a href="javascript:loadStep(&#39;bdxx&#39;,&#39;9&#39;);" target="_self">接站登记</a>
+				</li>
+				<li class="default">
+				
+				<cite id="cite3"></cite><a href="javascript:loadStep(&#39;shyp&#39;,&#39;9&#39;);" target="_self">购买生活用品</a>
+				</li>
+				<li class="default">
+				
+				<cite id="cite1"></cite><a href="javascript:loadStep(&#39;pay&#39;,&#39;9&#39;);" target="_self">学杂费缴纳</a>
+				</li>
+				<li class="default">
+				
+				<cite id="cite6"></cite><a href="javascript:loadStep(&#39;green&#39;,&#39;9&#39;);" target="_self">绿色通道</a>
+				</li>
+				<li class="default">
+				
+				<cite id="cite7"></cite><a href="javascript:loadStep(&#39;bdd&#39;,&#39;9&#39;);" target="_self">完成网上报到</a>
+				</li>
+		</ul>
+	</div>
+	<div class="rightbar">
+	<div class="m30" style="width:900px;">
+		<div class="title">
+			<div class="title_left"></div>
+			<ul>
+				<li><span>首页&nbsp;&gt;&nbsp;个人信息</span>个人信息
+				</li>
+			</ul>
+			<div class="title_right"></div>
+		</div>
+		
+ <style>
+<!--
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.alert-warning {
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+  color: #8a6d3b;
+}
+
+-->
+</style>
+<h1 class="m_t20"><span>基本信息
+  		</span>
+ </h1>
+ <div class="m20">
+	  <table width="100%" border="0" cellspacing="0" class="m_b40 tab_h30">
+		  <tbody><tr>
+			  <td rowspan="4" valign="top" width="12%">
+						  <img src="./自助迎新系统_files/noPhoto.jpg" width="107" height="136">
+			  </td>
+			  <td width="12%" align="right">姓名：</td>
+			  <td width="16%">于根</td>
+			  <td width="16%" align="right">身份证号：</td>
+			  <td width="16%">420983199901056036</td>
+			  <td width="12%" align="right">考生号：</td>
+			  <td width="16%">20P110927000659</td>
+		  </tr>
+		  <tr>
+			  <td align="right">学号：</td>
+			  <td>20200192055</td>
+			  <td align="right">性别：</td>
+			  <td>男</td>
+			  <td align="right">民族：</td>
+			  <td>汉族</td>
+		  </tr>
+		  <tr>
+			  <td align="right">学院：</td>
+			  <td>临床医学院</td>
+			  <td align="right">专业：</td>
+			  <td>临床医学</td>
+			  <td align="right">班级：</td>
+			  <td>20临床医学（专升本）2</td>
+		  </tr>
+		  <tr>
+			  <td align="right">政治面貌：</td>
+			  <td>共青团员</td>
+			  <td align="right">出生年月：</td>
+			  <td>19990105</td>
+			  <td align="right">备注：</td>
+			  <td></td>
+		  </tr>
+	  </tbody></table>
+  </div>
+  
+  	<!-- <h1 class="m_t20"><span>学长班主任和志愿者信息</span> -->
+  	<h1 class="m_t20"><span>班主任信息</span></h1>
+  	
+	<table width="100%" border="0" cellspacing="0" class="m_b40 tab_h30">
+		<tbody><tr height="30">
+			<td align="right" width="24%">班主任：</td>
+			<td>
+						阮晚元&nbsp;联系方式：18892308368 QQ号:1305729197 QQ群:1103845826
+			</td>
+		</tr>
+		<!-- <tr height="30">
+			<td align="right" width="24%">志愿者：</td>
+			<td></td>
+		</tr> -->
+	</tbody></table>
+  
+  
+  
+  <h1 class="m_t20"><span>学生信息
+  </span></h1>
+	<table width="100%" border="0" cellspacing="0" class="m_b40 tab_h30">
+		<tbody><tr height="30">
+			<td width="24%" align="right">手机：</td>
+			<td width="16%">18272247785</td>
+			<td width="16%" align="right">邮编：</td>
+			<td width="16%">432700</td>
+			<td width="12%" align="right">QQ号：</td>
+			<td width="16%">1933832279</td>
+		</tr>
+		<tr>
+			<td align="right">是否单亲：</td>
+			<td>否</td>
+			<td align="right">是否孤残：</td>
+			<td>否</td>
+			<td align="right">家庭状况：</td>
+			<td>一般</td>
+		</tr>
+		<tr>
+			<td align="right">籍贯：</td>
+			<td colspan="3">湖北省随州市</td>
+			<td align="right">家庭电话：</td>
+			<td>18272247785</td>
+		</tr>
+		<tr height="30">
+			<td align="right">家庭住址：</td>
+			<td colspan="5">湖北省随州市广水市余店镇双楼村36号</td>
+		</tr>
+		<tr>
+			<td align="right">曾获荣誉(校级以上)：<br>(500字以内)&nbsp;&nbsp;</td>
+			<td colspan="5">无</td>
+		</tr>
+	</tbody></table>
+   <form id="form" action="http://zzyx.hbust.com.cn/yx/stdReg/saveStudent" method="post" target="_self" enctype="multipart/form-data">
+		<input type="hidden" name="student.studentid" value="20200192055">
+		<input type="hidden" name="stepid" value="base">
+		<input type="hidden" name="planid" value="9">
+<h1 class="m_t20"><span>身体状况</span></h1>
+	<table width="100%" border="0" cellspacing="0" class="m_b40 tab_h30">
+		<tbody><tr height="30">
+			<td align="right" width="24%">身高(cm)：</td>
+			<td width="26%">172</td>
+			<!-- <td align="right" width="15%">血型：</td>
+			<td width="20%"></td> -->
+			<td align="right" width="15%">体重(kg)：</td>
+			<td width="35%">52</td>
+		</tr>
+		<tr height="30">
+			<td align="right">过往病史：</td>
+			<td colspan="3">无</td>
+		</tr>
+		<tr height="30">
+			<td align="right">其他病史：</td>
+			<td colspan="3">无</td>
+		</tr>
+
+      </tbody></table>
+      
+      
+<h1 class="m_t20"><span>直系家庭成员</span></h1>
+      <table width="100%" border="0" cellspacing="0" class="m_b40 tab_h30">
+        <tbody><tr>
+           <td width="10%" align="center">姓名</td>
+          <td width="3%" align="center">关系</td>
+          <td width="10%" align="center">工作单位</td>
+          <td width="10%" align="center">月收入(元)</td>
+          <td width="12%" align="center">联系电话</td>
+          <td width="10%" align="center">岗位</td>
+          <td width="10%" align="center">是否在岗</td>
+        </tr>
+					<tr>
+						<td align="center">于敦享</td>
+						<td align="center">父子</td>
+						<td align="center">无</td>
+						<td align="center">0.00</td>
+						<td align="center">15523203329</td>
+						<td align="center">务农</td>
+						<td align="center">是</td>
+					</tr>
+					<tr>
+						<td align="center">雷环</td>
+						<td align="center">母子</td>
+						<td align="center">无</td>
+						<td align="center">0.00</td>
+						<td align="center">15862366466</td>
+						<td align="center">务农</td>
+						<td align="center">是</td>
+					</tr>
+					<tr>
+						<td align="center">于佳乐</td>
+						<td align="center">兄弟</td>
+						<td align="center">无</td>
+						<td align="center">0.00</td>
+						<td align="center">无</td>
+						<td align="center">学生</td>
+						<td align="center">是</td>
+					</tr>
+				
+        </tbody></table>
+        
+      <!--   <h1 class="m_t20"><span>主要社会关系</span></h1>
+      <table width="100%" border="0" cellspacing="0" class="m_b40 tab_h30">
+        <tr>
+          <td width="15%" align="center">姓名</td>
+          <td width="15%" align="center">关系</td>
+          <td width="15%" align="center">工作单位</td>
+          <td width="15%" align="center">月收入(元)</td>
+          <td width="15%" align="center">联系电话</td>
+          <td width="15%" align="center">经济联系或供养情况</td>
+          </tr>
+        </table> -->
+        
+        <h1 class="m_t20"><span>紧急联系人</span></h1>
+      <table width="100%" border="0" cellspacing="0" class="m_b40 tab_h30">
+      	<tbody><tr>
+          <td width="15%" align="right">姓名：</td>
+          <td width="15%" align="left">陈瑞萍</td>
+          <td width="15%" align="right">电话：</td>
+          <td width="15%" align="left">13776042486</td>
+          <td width="15%" align="right">单位：</td>
+          <td width="15%" align="left">苏州西安交通大学附属利物浦学校</td>
+        </tr>
+        <tr>
+          <td width="15%" align="right">QQ：</td>
+          <td width="15%" align="left">无</td>
+          <td width="15%" align="right">与联系人的关系：</td>
+          <td width="15%" align="left">老妈</td>
+          <td width="15%" align="center"></td>
+        </tr>
+      </tbody></table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class=" m_b40 tab_h30">
+		  <tbody><tr>
+		    <td width="100%" align="center">
+		     <input type="button" class="blue_button" value="修改" onclick="edit(&#39;base&#39;,&#39;9&#39;);">
+		     <input type="button" class="orange_button" value="下一步" onclick="save();">
+		     </td>
+		    </tr>
+		</tbody></table>
+    </form>
+    <script type="text/javascript">
+    $(document).ready(function() {
+    	  $("#qsz").suggest(citys,{hot_list:commoncitys,attachObject:"#cityListItem_qsz"});
+    	  $("#zzz").suggest(citys,{hot_list:commoncitys,attachObject:"#cityListItem_zzz"});
+    });
+  
+    
+	  	function save(){
+			isLogin();
+			if($("#qsz").val()=='中文/简拼') {
+				$("#qsz").val("");
+			}
+			if($("#zzz").val()=='中文/简拼') $("#zzz").val("");
+			
+			if($("#form").valid()){
+				$("#form").submit();
+			}
+		}
+	</script>	
+
+  <table width="100%" border="0" cellspacing="0">
+    <tbody><tr>
+    <td colspan="2" id="font_grey" align="left"><p>&nbsp;</p>
+     <p style="font-size: 14px"><strong>注意事项：</strong><br></p>
+        <pre>1.以上信息，请如实填写，若有隐瞒，责任自负。
+2.填写数据用作《新生体检表》、《学生信息登记卡》、床位分配等，相应表格作为学生毕业档案材料。</pre></td>
+    </tr>
+   </tbody></table>
+    </div>
+    </div>   
+
+</div>
+<form id="hiddenForm" action="http://zzyx.hbust.com.cn/yx/stdReg/loadStep?stepid=base&amp;planid=9&amp;_tsp_=1599465999154" method="post" target="_self">
+</form>
+<div id="helpDialog" style="display:none">
+	<iframe id="helpFrame" name="helpFrame" width="100%" height="98%" border="0" frameborder="no" marginwidth="0" marginheight="0" src="./自助迎新系统_files/saved_resource.html"></iframe>	
+</div>
+
+<div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><button type="button" id="cboxPrevious"></button><button type="button" id="cboxNext"></button><button id="cboxSlideshow"></button><div id="cboxLoadingOverlay" style="float: left;"></div><div id="cboxLoadingGraphic" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"></div></div><div class="om-dialog om-widget om-widget-content om-corner-all om-draggable" tabindex="-1" role="dialog" aria-labelledby="ui-dialog-title-jjknrdDiv" style="display: none; z-index: 1000; outline: 0px;"><div class="om-dialog-titlebar om-widget-header om-corner-all om-helper-clearfix"><span class="om-dialog-title" id="ui-dialog-title-jjknrdDiv">&nbsp;</span><a href="http://zzyx.hbust.com.cn/yx/stdReg/loadStep?stepid=base&amp;planid=9&amp;_tsp_=1599465999154#" class="om-dialog-titlebar-close om-corner-tr" role="button"><span class="om-icon-closethick">close</span></a></div><div id="jjknrdDiv" class="om-dialog-content om-widget-content">
+	<iframe src="./自助迎新系统_files/saved_resource(1).html" name="openFrame" id="openFrame" width="100%" height="360px" border="0" frameborder="no"></iframe>
+</div></div></body></html>
