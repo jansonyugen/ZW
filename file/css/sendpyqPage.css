@@ -1,0 +1,87 @@
+/* sendpyqPage.css: */
+#sendPYQPage{
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	position: fixed;
+	overflow: hidden;
+	z-index: 5;
+	/* top: 100vh；开始的时候藏在下面 */
+	top: 100vh;
+	transition: all 0.5s;
+}
+.sendPYQHeader{
+	display: flex;
+	height: 30px;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 10px;
+}
+.title{
+	font-weight: bold;
+	font-size: 14px;
+}
+.sendPYQ{
+	
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	width: 40px;
+	font-size: 13px;
+}
+#cannotSend{
+	background-color: #DCDCDC;
+	color: #808080;
+}
+#canSend{
+	background-color: green;
+	color: white;
+}
+.PYQTextContain{
+	height: 180px;
+	width: 100%;
+	padding: 20px 40px;
+	box-sizing: border-box;
+}
+.PYQtext{
+	height: 100%;
+	width: 100%;
+	border: 0;
+	outline: none;
+	resize: none;
+	/* overflow: hidden; */
+}
+.otherSet{
+	height: 100px;
+	width: 100%;
+	padding: 0 40px;
+	box-sizing: border-box;
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.line{
+	width: 100%;
+	height: 1px;
+	background: #c8c8c8;
+}
+.option{
+	height: 30px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.inputPicConatin{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+#deletePicContain{
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: none;
+	width: 100vw;
+	height: 100%;
+}
