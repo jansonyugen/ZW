@@ -1,0 +1,780 @@
+---
+title: "Base-R"
+author: "Yu"
+format: html
+editor: visual
+---
+
+# Base R（R基础）
+
+### 参考资料
+
+------------------------------------------------------------------------
+
+[Base R](https://rstudio.github.io/cheatsheets/base-r.pdf)
+
+[Posit Cheatsheets](https://rstudio.github.io/cheatsheets/)
+
+[Contributed Cheatsheets](https://rstudio.github.io/cheatsheets/contributed-cheatsheets.html)
+
+------------------------------------------------------------------------
+
+### 1.获取帮助
+
+```{r}
+# ?mean
+
+# R的搜索栏中搜索
+# help.search('weighted mean')
+
+
+# help(package = 'dplyr')
+
+# 对象结构的总结
+str(iris)
+
+# 对象所属何类
+class(iris)
+
+```
+
+### 2.使用包
+
+```{r}
+# 安装包:从CRAN 网站下载包
+#install.packages('dplyr')
+
+# 载入包
+library(dplyr)
+
+# 从包中使用特殊功能
+dplyr::select
+
+# 将内置数据集载入当前环境
+data(iris)
+
+```
+
+### 3.工作路径
+
+```{r}
+# 获取当前工作路径
+getwd()
+
+# 改变工作路径
+setwd('d://R_workfiles')
+
+```
+
+### 4.向量Vectors
+
+#### 4.1创建向量
+
+```{r}
+# 向向量中添加元素
+c(2,4,6)
+
+# 整数序列
+2:6
+
+# 复杂序列 from=2,to=3,by=0.5步长/增量  生成的一个序列
+seq(2,3,by=0.5)
+
+
+# 重复  序列1:2重复(times)3次,每个元素重复(each)3次
+rep(1:2,times= 3)
+
+rep(1:2,each=3)
+
+```
+
+#### 4.2向量的功能
+
+```{r}
+
+x <- c(1:50)
+
+# 返回排列好的x序列
+sort(x)
+# 返回反转的x序列
+rev(x)
+
+# 观察值的计数
+table(x)
+
+# 去重/看不相同的值
+unique(x)
+
+```
+
+#### 4.3选择向量元素
+
+```{r}
+
+x <- -20:30
+
+
+# 通过索引/位置
+x[4]
+
+# 去除索引为4的值: -17
+x[-4]
+
+# 索引为2,3,4
+x[2:4]
+# 去掉索引为2,3,4的值
+x[-c(2:4)]
+
+# 输出索引为1,5的值
+x[c(1,5)]
+
+# 通过值选元素
+
+x[x == 10]
+
+x[x < 0]
+
+x[x %in% c(1,2,5)]
+
+
+# 名字或键选择
+x['apple']
+
+
+```
+
+## 编程
+
+### For循环
+
+``` r
+for (var in sequnence){
+   Do command/operation
+}
+```
+
+Example
+
+```{r}
+for (i in 1:4){
+  j <- i + 10
+  print(j)
+}
+```
+
+### While循环
+
+``` r
+while (condition){
+Do something
+}
+```
+
+Example
+
+```{r}
+for (i in 1:4){
+  while(i < 5){
+    print(i)
+    i <- i + 1
+  }
+}
+```
+
+### If结构
+
+``` r
+if (condition){
+Do something
+} else {
+Do something different
+}
+```
+
+Examples
+
+```{r}
+for (i in 1:4){
+  if (i > 3){
+    print('Yes')
+  } else {
+    print('No')
+  }
+}
+```
+
+### 定义函数/功能
+
+``` r
+function_name <- function(var){
+Do something
+return(new_variable)
+}
+```
+
+Exanples
+
+```{r}
+# 定义一个名为square的函数 功能是平方
+square <- function(x){
+  squared <- x*x
+  return(squared)
+}
+
+for (i in 1:4){
+  print(square(i))
+}
+
+```
+
+## 读写数据 3种方法
+
+### 1.table
+
+```{r}
+# 先创建一个数据集
+df <- c(1:50)
+
+# table写数据
+write.table(df, 'file.txt')
+
+# table读数据
+db <- read.table('file.txt')
+db
+
+```
+
+### 2.csv
+
+```{r}
+df <- c(1:40)
+# 创建8行5列矩阵
+dim(df) <- c(8,5)
+df
+# 写入
+write.csv(df,'file.csv')
+
+# 读入
+da <- read.csv('file.csv')
+da
+
+```
+
+### load 和 save
+
+```{r}
+
+df <- c(1:40)
+# 创建8行5列矩阵
+dim(df) <- c(8,5)
+
+df
+
+
+# 写入数据
+save(df, file = 'file.Rdata')
+# 载入数据
+load('file.RData')
+# df为载入后的变量名,可以直接
+df
+
+```
+
+## 逻辑判断
+
+```{r}
+
+
+
+# ==等于  !=不等于
+a = 1
+b = 1
+a == b
+
+c = 2
+a != b
+a != c
+
+# >大于      <小于
+a > b
+c > a
+c > b
+
+a < c
+b < c
+c < a
+c < b
+
+# >=大于等于    <=小于等于
+t <- c(1:10)
+t >= 3
+t[t >= 3]
+t <= 5
+t[t <= 5]
+
+
+# is.na()  是否 含/是 NA:缺失值
+r <- c(1:10)
+# 手动设置几个Na值,超索引插入一个值,间隔的会自动Na缺失值
+r[15] <- 15
+r
+# 判断缺失值NA,返回布尔类型
+is.na(r)
+# 利用布尔类型,可以输出缺失值
+r[is.na(r)]
+# 找出缺失值NA的索引
+which(is.na(r))
+
+# is.null()  是否是空值
+
+# 创建空值null数据集
+u <- c()
+u
+# 判断是否为空值null
+is.null(u)
+# 返回null空值的索引
+which(is.null(u))
+
+```
+
+## 类型
+
+### logical 布尔类型
+
+`as.logical`
+
+-   TRUE/T
+-   FALSE/F
+
+### 整数类型
+
+`as.numeric`
+
+-   1, 0, 1
+
+### 字符串
+
+`as.character`
+
+-   '1', '2', '3'
+
+### 因子
+
+`as.factor`
+
+-   '1', '0', '1', levels: '1', '0'
+
+## 数学-统计学 函数/功能
+
+| 函数         | 描述                    |
+|:-------------|:------------------------|
+| log(x)       | 求log值                 |
+| exp(x)       | 求指数以e为底(ln)的指数 |
+| max(x)       | 最大值                  |
+| min(x)       | 最小值                  |
+| round(x, n)  | 保留小数点后第n位       |
+| signif(x, n) | 保留n位有效数字         |
+| cor(x, y)    | 相关性                  |
+| sum(x)       | 求和                    |
+| mean(x)      | 均值                    |
+| median(x)    | 中位数                  |
+| quantile(x)  | 百分位数                |
+| rank(x)      | 排序                    |
+| var(x)       | 方差                    |
+| sd(x)        | 标准差                  |
+
+-   如果 $y=ln 2$，那么 $2=e^y$，所以 $y≈0.6931$
+-   如果 $y=ln e$，那么 $e=e^y$，所以 $y=1$
+-   如果 $y=ln 1$，那么 $1=e^y$，所以 $y=0$
+
+Examples
+
+```{r}
+# log x要求的值，base底数
+log(16,base=2)
+# 默认自然对数$log_e$
+log(16)
+# lg=log10
+log10(10)
+
+
+# exp()求以e为底的某数的指数  exp(y) -> y =e^x   x 即为要求的指数
+# e = e^y ->  ln(e) = y   y=1
+e <- exp(1)
+
+# 向上取整
+ceiling(c(-2.3,3.1415926))
+
+# 保留小数有效数字
+round(c(-2.3,3.1415926),digits = 2)
+# 保留有效数字
+signif(c(-2.3,3.1415926),digits = 2)
+
+sin(x)
+
+cos(x)
+
+vec <- 1:100
+
+# 求和sum
+sum(vec)
+
+max(vec)
+
+min(vec)
+# 返回最大值最小值
+range(vec)
+# 均数
+mean(vec)
+# 方差
+var(vec)
+round(var(vec),digits = 2)
+# 标准差
+sd(vec)
+round(sd(vec),digits = 2)
+# 向量连乘
+prod(vec)
+# 中位数
+median(vec)
+
+# 计算分位数
+quantile(vec)
+
+# 四分位数，中位数，八分位数
+quantile(vec,c(0.4,0.5,0.8))
+```
+
+## 变量赋值 环境
+
+```{r}
+k <- 'apple'
+k
+```
+
+环境
+
+```{r}
+# 将所有变量列入环境:列表
+ls()
+
+x <- 1:5
+# 从环境中移除变量
+rm(x)
+# 移除所有变量
+rm(list = ls())
+# 再次查看环境中的全部变量是否完全移除
+ls()
+```
+
+## 矩阵
+
+-   **矩阵乘法:**将两个矩阵相乘得到一个新的矩阵。在矩阵乘法中，第一个矩阵的列数必须等于第二个矩阵的行数
+
+Example:
+
+$$\begin{align}\text{A} &= \left[\begin{array}{ccc}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33} \\
+\end{array}\right]
+\\
+\text{B} &= \left[\begin{array}{ccc}
+b_{11} & b_{12} & b_{13} \\
+b_{21} & b_{22} & b_{23} \\
+b_{31} & b_{32} & b_{33} \\
+\end{array}\right]\\
+\text{AB} 
+&= \left[\begin{array}{ccc}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33} \\
+\end{array}\right]\times
+\left[\begin{array}{ccc}
+b_{11} & b_{12} & b_{13} \\
+b_{21} & b_{22} & b_{23} \\
+b_{31} & b_{32} & b_{33} \\
+\end{array}\right] \\
+&= \left[\begin{array}{ccc}
+\left(a_{11}b_{11}+a_{12}b_{21}+a_{13}b_{31}\right) & \left(a_{11}b_{12}+a_{12}b_{22}+a_{13}b_{32}\right) & \left(a_{11}b_{13}+a_{12}b_{23}+a_{13}b_{33}\right) \\
+\left(a_{21}b_{11}+a_{22}b_{21}+a_{23}b_{31}\right) & \left(a_{21}b_{12}+a_{22}b_{22}+a_{23}b_{32}\right) & \left(a_{21}b_{13}+a_{22}b_{23}+a_{23}b_{33}\right) \\
+\left(a_{31}b_{11}+a_{32}b_{21}+a_{33}b_{31}\right) & \left(a_{31}b_{12}+a_{32}b_{22}+a_{33}b_{32}\right) & \left(a_{31}b_{13}+a_{32}b_{23}+a_{33}b_{33}\right) \\
+\end{array}\right]\\
+&= \text{C} \\
+&= \left[\begin{array}{ccc}
+c_{11} & c_{12} & c_{13} \\
+c_{21} & c_{22} & c_{23} \\
+c_{31} & c_{32} & c_{33} \\
+\end{array}\right]\end{align}$$
+
+![a11](Base-R_files/images/a11.jpg){fig-align="center"}
+
+![a12](Base-R_files/images/a12.jpg){fig-align="center"}
+
+用a矩阵的每一行,对应去乘b矩阵的每一列
+
+$c_{a_{row},b_{col}}$
+
+$c_{rc}=\sum\limits_{r=1}^{c=1} a_{row}\times b_{col}$
+
+```{r}
+# 创建矩阵
+x <- 1:9
+m <- matrix(x, nrow =3 ,ncol =3 )
+
+# 选择行/列  索引坐标
+m[2, ]
+m[, 1]
+
+m[2, 3]
+
+# 行列转置
+t(m)
+
+n <- matrix(1:9,3 ,3 )
+# 矩阵乘法：将两个矩阵相乘得到一个新的矩阵。在矩阵乘法中，第一个矩阵的列数必须等于第二个矩阵的行数。
+m %*% n
+
+```
+
+$$\begin{equation*}
+\begin{aligned}\\
+2x + 3y &= 8 \\
+4x - 5y &= -7 \\
+\end{aligned}
+\end{equation*}$$
+
+```{r}
+# solve(m, n)
+# 定义系数矩阵和常数向量
+A <- matrix(c(2, 3, 4, -5), nrow = 2, byrow = TRUE)
+b <- c(8, -7)
+
+# 求解方程组
+solution <- solve(A, b)
+
+```
+
+## list 列表
+
+列表是一个元素的集合，包含的类型可以不同\[相较`向量`：类型必须统一\]
+
+```{r}
+l <- list(x = 1:5, y = c('a', 'b'))
+l
+
+# l中第二个元素
+l[[2]]
+
+# 只有第一个元素的新列表
+l[1]
+
+# 相同类型的选择，均使用列表中所存储的向量名
+# 名为x的元素
+l$x
+
+# 只有一个名为y的元素
+l['y']
+
+
+```
+
+## Data Frame 数据框
+
+```{r}
+
+# 一个特殊的所有元素相同长度的列表案例
+df <-  data.frame(x = 1:3, y = c('a', 'b', 'c'))
+df
+
+# List subsetting  列表构建子集
+
+df$x
+df[[2]]
+
+
+# 理解一个数据框
+# 看整个数据框
+View(df)
+
+# 看前6行
+head(df)
+
+
+# 矩阵子集
+# 访问类似矩阵行/列，索引
+df[ ,2]
+df[2, ]
+df[2, 2]
+
+
+
+# 取一个向量、矩阵或数据帧参数序列，并分别按列或行组合。这些是泛型函数，带有其他R类的方法
+# Bind columns 锁定列，因第二列1:7，第一列只有数字1一个，按照第二列长度扩展
+m <- cbind(1, 1:7) # the '1' (= shorter vector) is recycled
+m
+# 第一列列名为1 是作为向量，第二列列名为2
+
+# m中第1列全为1，第2列1:7;第3列8:14，  [ ,c(1,3,2)]列重排 行不变  第1列 : 第2列(列名3[8:14]) : 第3列(列名2[1:7])
+m <- cbind(m, 8:14)[, c(1, 3, 2)] # insert a column
+m
+
+
+# Bind rows 锁定行
+rbind()
+n <- rbind(1, 3:9)
+n
+
+# 内:先锁行  row1 1,1,1   row2 1,2,3
+# 外：锁列   在以上形成的三列之前插入一列，数值填充0，row与以上平齐2行
+cbind(0, rbind(1, 1:3))
+
+# 设置列名
+# 内: row1:a 1,1,1  row2:b 1,2,3 外：col1:I 0,0
+cbind(I = 0, X = rbind(a = 1, b = 1:3))  # use some names
+
+# 使用不同行列名
+# xx是一个数据框col1: 0,0
+xx <- data.frame(I = rep(0,2))
+# row1:a 0,1,1,1 row2:b 0,1,2,3 
+cbind(xx, X = rbind(a = 1, b = 1:3))   # named differently
+
+# 创建空矩阵，不含任何数据，不含列，不含行数据，仅空索引
+matrix(1, nrow = 2, ncol = 0)
+# 以0填充1一列
+d <- cbind(0, matrix(1, nrow = 2, ncol = 0))
+# 维度2行，1列
+dim(cbind(0, matrix(1, nrow = 2, ncol = 0))) #-> 2 x 1
+
+```
+
+## String 字符串
+
+```{r}
+
+# 合并多个向量  成字符串
+x <- c(1:4)
+y <- c(10:14)
+z <- paste(x, y, sep = " ")
+z
+
+# 把一个向量中的元素合并
+p <- paste(x, collapse = ' ')
+p
+
+# 在x中匹配正则表达式的字符串
+# grep(pattern, x)
+
+# 类似python中re.sub(pattern, replace_str, strings)
+# gsub(正则式,替换内容,待匹配的内容)
+# gsub(pattern, replace, x)
+
+# 转换为大小写
+# toupper(x)
+# tolower(x)
+
+# 字符串字符所对应的编码数
+# nchar(x)
+
+```
+
+## Factors 因子
+
+```{r}
+# 将向量转换为因子，可以设置因子的水平和排序
+x <- c(1:10)
+factor(x)
+
+# 将整数型向量通过切分为片段，转换为因子
+x <- c(1:20)
+cut(x, breaks = 4)
+
+```
+
+## 统计学
+
+```{r}
+#linear model 线性模型
+# lm(y ~ x, data = df)
+# Examples:
+## Annette Dobson (1990) "An Introduction to Generalized Linear Models".
+## Page 9: Plant Weight Data.
+ctl <- c(4.17,5.58,5.18,6.11,4.50,4.61,5.17,4.53,5.33,5.14)
+trt <- c(4.81,4.17,4.41,3.59,5.87,3.83,6.03,4.89,4.32,4.69)
+group <- gl(2, 10, 20, labels = c("Ctl","Trt"))
+weight <- c(ctl, trt)
+lm.D9 <- lm(weight ~ group)
+lm.D90 <- lm(weight ~ group - 1) # omitting intercept
+
+anova(lm.D9)
+summary(lm.D90)
+
+opar <- par(mfrow = c(2,2), oma = c(0, 0, 1.1, 0))
+plot(lm.D9, las = 1)      # Residuals, Fitted, ...
+par(opar)
+
+
+
+# Generalised linear model. 广义线性模型
+# glm(y ~ x, data=df)
+
+# summary Get more detailed information out a model. 获取模型细节
+# summary(df)
+summary(attenu, digits = 4) #-> summary.data.frame(...), default precision
+summary(attenu $ station, maxsum = 20) #-> summary.factor(...)
+
+lst <- unclass(attenu$station) > 20 # logical with NAs
+## summary.default() for logicals -- different from *.factor:
+summary(lst)
+summary(as.factor(lst))
+
+
+# 两均数t-检验
+# t.test()
+
+# 配对数据的t-检验
+# pairwise.t.test
+
+# 拟合方差分析模型
+# aov
+
+# 检验比例间的差异
+# prop.test
+
+
+
+```
+
+## Distributions 分布
+
++-----------+-----------+-----------+-------------------------+-----------+
+|           | Random    | Desity    | Cumulative Distribution | Quantile  |
+|           |           |           |                         |           |
+|           | Variates  | Fuction   |                         |           |
++:==========+:==========+:==========+:========================+:==========+
+| Normal    | rnorm     | dnorm     | pnorm                   | qnorm     |
++-----------+-----------+-----------+-------------------------+-----------+
+| Poission  | rpois     | dpois     | ppois                   | qpois     |
++-----------+-----------+-----------+-------------------------+-----------+
+| Binomial  | rbinom    | dbinom    | pbinom                  | qbinom    |
++-----------+-----------+-----------+-------------------------+-----------+
+| Uniform   | runif     | dunif     | punif                   | qunif     |
++-----------+-----------+-----------+-------------------------+-----------+
+
+## Plotting 制图
+
+```{r}
+x <- c(43:70)
+plot(x)
+
+```
+
+## ggplot2 Package
+
+```{r}
+library(ggplot2)
+x <- c(43:70)
+y <- c(29:85)
+
+# 柱状图
+hist(x)
+```
