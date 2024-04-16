@@ -66,221 +66,40 @@ setwd('d://R_workfiles')
 
 ```
 
-### 4.向量Vectors
 
-#### 4.1创建向量
-
-```{r}
-# 向向量中添加元素
-c(2,4,6)
-
-# 整数序列
-2:6
-
-# 复杂序列 from=2,to=3,by=0.5步长/增量  生成的一个序列
-seq(2,3,by=0.5)
-
-
-# 重复  序列1:2重复(times)3次,每个元素重复(each)3次
-rep(1:2,times= 3)
-
-rep(1:2,each=3)
-
-```
-
-#### 4.2向量的功能
+### 4.变量赋值 环境
 
 ```{r}
-
-x <- c(1:50)
-
-# 返回排列好的x序列
-sort(x)
-# 返回反转的x序列
-rev(x)
-
-# 观察值的计数
-table(x)
-
-# 去重/看不相同的值
-unique(x)
-
+k <- 'apple'
+k
 ```
 
-#### 4.3选择向量元素
+环境
 
 ```{r}
+# 将所有变量列入环境:列表
+ls()
 
-x <- -20:30
-
-
-# 通过索引/位置
-x[4]
-
-# 去除索引为4的值: -17
-x[-4]
-
-# 索引为2,3,4
-x[2:4]
-# 去掉索引为2,3,4的值
-x[-c(2:4)]
-
-# 输出索引为1,5的值
-x[c(1,5)]
-
-# 通过值选元素
-
-x[x == 10]
-
-x[x < 0]
-
-x[x %in% c(1,2,5)]
-
-
-# 名字或键选择
-x['apple']
-
-
+x <- 1:5
+# 从环境中移除变量
+rm(x)
+# 移除所有变量
+rm(list = ls())
+# 再次查看环境中的全部变量是否完全移除
+ls()
 ```
 
-## 编程
+## 5.类型
 
-### For循环
+### 5.1 logical 布尔类型
 
-``` r
-for (var in sequnence){
-   Do command/operation
-}
-```
+`as.logical`
 
-Example
-
-```{r}
-for (i in 1:4){
-  j <- i + 10
-  print(j)
-}
-```
-
-### While循环
-
-``` r
-while (condition){
-Do something
-}
-```
-
-Example
-
-```{r}
-for (i in 1:4){
-  while(i < 5){
-    print(i)
-    i <- i + 1
-  }
-}
-```
-
-### If结构
-
-``` r
-if (condition){
-Do something
-} else {
-Do something different
-}
-```
-
-Examples
-
-```{r}
-for (i in 1:4){
-  if (i > 3){
-    print('Yes')
-  } else {
-    print('No')
-  }
-}
-```
-
-### 定义函数/功能
-
-``` r
-function_name <- function(var){
-Do something
-return(new_variable)
-}
-```
-
-Exanples
-
-```{r}
-# 定义一个名为square的函数 功能是平方
-square <- function(x){
-  squared <- x*x
-  return(squared)
-}
-
-for (i in 1:4){
-  print(square(i))
-}
-
-```
-
-## 读写数据 3种方法
-
-### 1.table
-
-```{r}
-# 先创建一个数据集
-df <- c(1:50)
-
-# table写数据
-write.table(df, 'file.txt')
-
-# table读数据
-db <- read.table('file.txt')
-db
-
-```
-
-### 2.csv
-
-```{r}
-df <- c(1:40)
-# 创建8行5列矩阵
-dim(df) <- c(8,5)
-df
-# 写入
-write.csv(df,'file.csv')
-
-# 读入
-da <- read.csv('file.csv')
-da
-
-```
-
-### load 和 save
-
-```{r}
-
-df <- c(1:40)
-# 创建8行5列矩阵
-dim(df) <- c(8,5)
-
-df
+-   TRUE/T
+-   FALSE/F
 
 
-# 写入数据
-save(df, file = 'file.Rdata')
-# 载入数据
-load('file.RData')
-# df为载入后的变量名,可以直接
-df
-
-```
-
-## 逻辑判断
+### 5.2 逻辑判断
 
 ```{r}
 
@@ -337,224 +156,148 @@ which(is.null(u))
 
 ```
 
-## 类型
 
-### logical 布尔类型
-
-`as.logical`
-
--   TRUE/T
--   FALSE/F
-
-### 整数类型
+### 5.3 Numeric整数类型
 
 `as.numeric`
 
 -   1, 0, 1
 
-### 字符串
+### 5.4 String 字符串
 
 `as.character`
 
 -   '1', '2', '3'
 
-### 因子
+
+```{r}
+
+# 合并多个向量  成字符串
+x <- c(1:4)
+y <- c(10:14)
+z <- paste(x, y, sep = " ")
+z
+
+# 把一个向量中的元素合并
+p <- paste(x, collapse = ' ')
+p
+
+# 在x中匹配正则表达式的字符串
+# grep(pattern, x)
+
+# 类似python中re.sub(pattern, replace_str, strings)
+# gsub(正则式,替换内容,待匹配的内容)
+# gsub(pattern, replace, x)
+
+# 转换为大小写
+# toupper(x)
+# tolower(x)
+
+# 字符串字符所对应的编码数
+# nchar(x)
+
+```
+
+
+
+### 5.5 Factors 因子
 
 `as.factor`
 
 -   '1', '0', '1', levels: '1', '0'
 
-## 数学-统计学 函数/功能
-
-| 函数         | 描述                    |
-|:-------------|:------------------------|
-| log(x)       | 求log值                 |
-| exp(x)       | 求指数以e为底(ln)的指数 |
-| max(x)       | 最大值                  |
-| min(x)       | 最小值                  |
-| round(x, n)  | 保留小数点后第n位       |
-| signif(x, n) | 保留n位有效数字         |
-| cor(x, y)    | 相关性                  |
-| sum(x)       | 求和                    |
-| mean(x)      | 均值                    |
-| median(x)    | 中位数                  |
-| quantile(x)  | 百分位数                |
-| rank(x)      | 排序                    |
-| var(x)       | 方差                    |
-| sd(x)        | 标准差                  |
-
--   如果 $y=ln 2$，那么 $2=e^y$，所以 $y≈0.6931$
--   如果 $y=ln e$，那么 $e=e^y$，所以 $y=1$
--   如果 $y=ln 1$，那么 $1=e^y$，所以 $y=0$
-
-Examples
 
 ```{r}
-# log x要求的值，base底数
-log(16,base=2)
-# 默认自然对数$log_e$
-log(16)
-# lg=log10
-log10(10)
+# 将向量转换为因子，可以设置因子的水平和排序
+x <- c(1:10)
+factor(x)
 
-
-# exp()求以e为底的某数的指数  exp(y) -> y =e^x   x 即为要求的指数
-# e = e^y ->  ln(e) = y   y=1
-e <- exp(1)
-
-# 向上取整
-ceiling(c(-2.3,3.1415926))
-
-# 保留小数有效数字
-round(c(-2.3,3.1415926),digits = 2)
-# 保留有效数字
-signif(c(-2.3,3.1415926),digits = 2)
-
-sin(x)
-
-cos(x)
-
-vec <- 1:100
-
-# 求和sum
-sum(vec)
-
-max(vec)
-
-min(vec)
-# 返回最大值最小值
-range(vec)
-# 均数
-mean(vec)
-# 方差
-var(vec)
-round(var(vec),digits = 2)
-# 标准差
-sd(vec)
-round(sd(vec),digits = 2)
-# 向量连乘
-prod(vec)
-# 中位数
-median(vec)
-
-# 计算分位数
-quantile(vec)
-
-# 四分位数，中位数，八分位数
-quantile(vec,c(0.4,0.5,0.8))
-```
-
-## 变量赋值 环境
-
-```{r}
-k <- 'apple'
-k
-```
-
-环境
-
-```{r}
-# 将所有变量列入环境:列表
-ls()
-
-x <- 1:5
-# 从环境中移除变量
-rm(x)
-# 移除所有变量
-rm(list = ls())
-# 再次查看环境中的全部变量是否完全移除
-ls()
-```
-
-## 矩阵
-
--   **矩阵乘法:**将两个矩阵相乘得到一个新的矩阵。在矩阵乘法中，第一个矩阵的列数必须等于第二个矩阵的行数
-
-Example:
-
-$$\begin{align}\text{A} &= \left[\begin{array}{ccc}
-a_{11} & a_{12} & a_{13} \\
-a_{21} & a_{22} & a_{23} \\
-a_{31} & a_{32} & a_{33} \\
-\end{array}\right]
-\\
-\text{B} &= \left[\begin{array}{ccc}
-b_{11} & b_{12} & b_{13} \\
-b_{21} & b_{22} & b_{23} \\
-b_{31} & b_{32} & b_{33} \\
-\end{array}\right]\\
-\text{AB} 
-&= \left[\begin{array}{ccc}
-a_{11} & a_{12} & a_{13} \\
-a_{21} & a_{22} & a_{23} \\
-a_{31} & a_{32} & a_{33} \\
-\end{array}\right]\times
-\left[\begin{array}{ccc}
-b_{11} & b_{12} & b_{13} \\
-b_{21} & b_{22} & b_{23} \\
-b_{31} & b_{32} & b_{33} \\
-\end{array}\right] \\
-&= \left[\begin{array}{ccc}
-\left(a_{11}b_{11}+a_{12}b_{21}+a_{13}b_{31}\right) & \left(a_{11}b_{12}+a_{12}b_{22}+a_{13}b_{32}\right) & \left(a_{11}b_{13}+a_{12}b_{23}+a_{13}b_{33}\right) \\
-\left(a_{21}b_{11}+a_{22}b_{21}+a_{23}b_{31}\right) & \left(a_{21}b_{12}+a_{22}b_{22}+a_{23}b_{32}\right) & \left(a_{21}b_{13}+a_{22}b_{23}+a_{23}b_{33}\right) \\
-\left(a_{31}b_{11}+a_{32}b_{21}+a_{33}b_{31}\right) & \left(a_{31}b_{12}+a_{32}b_{22}+a_{33}b_{32}\right) & \left(a_{31}b_{13}+a_{32}b_{23}+a_{33}b_{33}\right) \\
-\end{array}\right]\\
-&= \text{C} \\
-&= \left[\begin{array}{ccc}
-c_{11} & c_{12} & c_{13} \\
-c_{21} & c_{22} & c_{23} \\
-c_{31} & c_{32} & c_{33} \\
-\end{array}\right]\end{align}$$
-
-![a11](Base-R_files/images/a11.jpg){fig-align="center"}
-
-![a12](Base-R_files/images/a12.jpg){fig-align="center"}
-
-用a矩阵的每一行,对应去乘b矩阵的每一列
-
-$c_{a_{row},b_{col}}$
-
-$c_{rc}=\sum\limits_{r=1}^{c=1} a_{row}\times b_{col}$
-
-```{r}
-# 创建矩阵
-x <- 1:9
-m <- matrix(x, nrow =3 ,ncol =3 )
-
-# 选择行/列  索引坐标
-m[2, ]
-m[, 1]
-
-m[2, 3]
-
-# 行列转置
-t(m)
-
-n <- matrix(1:9,3 ,3 )
-# 矩阵乘法：将两个矩阵相乘得到一个新的矩阵。在矩阵乘法中，第一个矩阵的列数必须等于第二个矩阵的行数。
-m %*% n
+# 将整数型向量通过切分为片段，转换为因子
+x <- c(1:20)
+cut(x, breaks = 4)
 
 ```
 
-$$\begin{equation*}
-\begin{aligned}\\
-2x + 3y &= 8 \\
-4x - 5y &= -7 \\
-\end{aligned}
-\end{equation*}$$
+
+### 5.6 Vectors 向量
+
+#### 5.6.1 创建向量
 
 ```{r}
-# solve(m, n)
-# 定义系数矩阵和常数向量
-A <- matrix(c(2, 3, 4, -5), nrow = 2, byrow = TRUE)
-b <- c(8, -7)
+# 向向量中添加元素
+c(2,4,6)
 
-# 求解方程组
-solution <- solve(A, b)
+# 整数序列
+2:6
+
+# 复杂序列 from=2,to=3,by=0.5步长/增量  生成的一个序列
+seq(2,3,by=0.5)
+
+
+# 重复  序列1:2重复(times)3次,每个元素重复(each)3次
+rep(1:2,times= 3)
+
+rep(1:2,each=3)
 
 ```
 
-## list 列表
+#### 5.6.2 向量的功能
+
+```{r}
+
+x <- c(1:50)
+
+# 返回排列好的x序列
+sort(x)
+# 返回反转的x序列
+rev(x)
+
+# 观察值的计数
+table(x)
+
+# 去重/看不相同的值
+unique(x)
+
+```
+
+#### 5.6.3 选择向量元素
+
+```{r}
+
+x <- -20:30
+
+
+# 通过索引/位置
+x[4]
+
+# 去除索引为4的值: -17
+x[-4]
+
+# 索引为2,3,4
+x[2:4]
+# 去掉索引为2,3,4的值
+x[-c(2:4)]
+
+# 输出索引为1,5的值
+x[c(1,5)]
+
+# 通过值选元素
+
+x[x == 10]
+
+x[x < 0]
+
+x[x %in% c(1,2,5)]
+
+
+# 名字或键选择
+x['apple']
+
+
+```
+
+
+### 5.7 list 列表
 
 列表是一个元素的集合，包含的类型可以不同\[相较`向量`：类型必须统一\]
 
@@ -578,7 +321,107 @@ l['y']
 
 ```
 
-## Data Frame 数据框
+
+### 5.8 Matrix 矩阵
+
+-   **矩阵乘法:**将两个矩阵相乘得到一个新的矩阵。在矩阵乘法中，第一个矩阵的列数必须等于第二个矩阵的行数
+
+Example:
+
+$$\begin{align}\text{A} &= \left[\begin{array}{ccc}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33} \\
+\end{array}\right]
+\\
+\\
+\text{B} &= \left[\begin{array}{ccc}
+b_{11} & b_{12} & b_{13} \\
+b_{21} & b_{22} & b_{23} \\
+b_{31} & b_{32} & b_{33} \\
+\end{array}\right]\\
+\\
+\text{AB} 
+&= \left[\begin{array}{ccc}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33} \\
+\end{array}\right]\times
+\left[\begin{array}{ccc}
+b_{11} & b_{12} & b_{13} \\
+b_{21} & b_{22} & b_{23} \\
+b_{31} & b_{32} & b_{33} \\
+\end{array}\right] \\
+\\
+&= \left[\begin{array}{ccc}
+\left(a_{11}b_{11}+a_{12}b_{21}+a_{13}b_{31}\right) & \left(a_{11}b_{12}+a_{12}b_{22}+a_{13}b_{32}\right) & \left(a_{11}b_{13}+a_{12}b_{23}+a_{13}b_{33}\right) \\
+\left(a_{21}b_{11}+a_{22}b_{21}+a_{23}b_{31}\right) & \left(a_{21}b_{12}+a_{22}b_{22}+a_{23}b_{32}\right) & \left(a_{21}b_{13}+a_{22}b_{23}+a_{23}b_{33}\right) \\
+\left(a_{31}b_{11}+a_{32}b_{21}+a_{33}b_{31}\right) & \left(a_{31}b_{12}+a_{32}b_{22}+a_{33}b_{32}\right) & \left(a_{31}b_{13}+a_{32}b_{23}+a_{33}b_{33}\right) \\
+\end{array}\right]\\
+\\
+&= \text{C} \\
+\\
+&= \left[\begin{array}{ccc}
+c_{11} & c_{12} & c_{13} \\
+c_{21} & c_{22} & c_{23} \\
+c_{31} & c_{32} & c_{33} \\
+\end{array}\right]\end{align}$$
+
+![a11](Base-R_files/images/a11.jpg){fig-align="center"}
+
+![a12](Base-R_files/images/a12.jpg){fig-align="center"}
+
+用a矩阵的每一行,对应去乘b矩阵的每一列
+
+$c_{a_{row},b_{col}}$
+
+$c_{rc}=\sum\limits_{r=1}^{c=1} a_{row}\times b_{col}$
+
+```{r}
+# 创建矩阵
+x <- 1:9
+m <- matrix(x, nrow =3 ,ncol =3 )
+m
+
+# 选择行/列  索引坐标
+m
+m[2, ]
+m[, 1]
+
+m[2, 3]
+
+print("原始行列")
+m
+# 行列转置
+print("转置后的行列")
+t(m)
+
+n <- matrix(1:9,3 ,3 )
+# 矩阵乘法：将两个矩阵相乘得到一个新的矩阵。在矩阵乘法中，第一个矩阵的列数必须等于第二个矩阵的行数。
+m %*% n
+
+```
+
+$$\begin{equation*}
+\begin{aligned}\\
+2x + 3y &= 8 \\ \\
+4x - 5y &= -7 \\
+\end{aligned}
+\end{equation*}$$
+
+```{r}
+# solve(m, n)
+# 定义系数矩阵和常数向量
+A <- matrix(c(2, 3, 4, -5), nrow = 2, byrow = TRUE)
+b <- c(8, -7)
+
+# 求解方程组
+solution <- solve(A, b)
+
+```
+
+
+### 5.9 Data Frame 数据框
 
 ```{r}
 
@@ -647,50 +490,91 @@ dim(cbind(0, matrix(1, nrow = 2, ncol = 0))) #-> 2 x 1
 
 ```
 
-## String 字符串
+
+
+## 6.数学-统计学 函数/功能
+
+| 函数         | 描述                    |
+|:-------------|:------------------------|
+| log(x)       | 求log值                 |
+| exp(x)       | 求指数以e为底(ln)的指数 |
+| max(x)       | 最大值                  |
+| min(x)       | 最小值                  |
+| round(x, n)  | 保留小数点后第n位       |
+| signif(x, n) | 保留n位有效数字         |
+| cor(x, y)    | 相关性                  |
+| sum(x)       | 求和                    |
+| mean(x)      | 均值                    |
+| median(x)    | 中位数                  |
+| quantile(x)  | 百分位数                |
+| rank(x)      | 排序                    |
+| var(x)       | 方差                    |
+| sd(x)        | 标准差                  |
+
+-   如果 $y=ln 2$，那么 $2=e^y$，所以 $y≈0.6931$
+-   如果 $y=ln e$，那么 $e=e^y$，所以 $y=1$
+-   如果 $y=ln 1$，那么 $1=e^y$，所以 $y=0$
+
+Examples
 
 ```{r}
+# log x要求的值，base底数
+log(16,base=2)
+# 默认自然对数$log_e$
+log(16)
+# lg=log10
+log10(10)
 
-# 合并多个向量  成字符串
-x <- c(1:4)
-y <- c(10:14)
-z <- paste(x, y, sep = " ")
-z
 
-# 把一个向量中的元素合并
-p <- paste(x, collapse = ' ')
-p
+# exp()求以e为底的某数的指数  exp(y) -> y =e^x   x 即为要求的指数
+# e = e^y ->  ln(e) = y   y=1
+e <- exp(1)
 
-# 在x中匹配正则表达式的字符串
-# grep(pattern, x)
+# 向上取整
+ceiling(c(-2.3,3.1415926))
 
-# 类似python中re.sub(pattern, replace_str, strings)
-# gsub(正则式,替换内容,待匹配的内容)
-# gsub(pattern, replace, x)
+# 保留小数点后几位
+round(c(-2.3,3.1415926),digits = 2)
+# 保留有效数字
+signif(c(-2.3,3.1415926),digits = 2)
 
-# 转换为大小写
-# toupper(x)
-# tolower(x)
+sin(x)
 
-# 字符串字符所对应的编码数
-# nchar(x)
+cos(x)
 
+vec <- 1:100
+
+# 求和sum
+sum(vec)
+
+max(vec)
+
+min(vec)
+# 返回最大值最小值:范围
+range(vec)
+# 均数
+mean(vec)
+# 方差
+var(vec)
+round(var(vec),digits = 2)
+# 标准差
+sd(vec)
+round(sd(vec),digits = 2)
+# 向量连乘
+prod(vec)
+# 中位数
+median(vec)
+
+# 计算分位数
+quantile(vec)
+
+# 四分位数，中位数，八分位数
+quantile(vec,c(0.4,0.5,0.8))
 ```
 
-## Factors 因子
 
-```{r}
-# 将向量转换为因子，可以设置因子的水平和排序
-x <- c(1:10)
-factor(x)
 
-# 将整数型向量通过切分为片段，转换为因子
-x <- c(1:20)
-cut(x, breaks = 4)
-
-```
-
-## 统计学
+## 7.统计学
 
 ```{r}
 #linear model 线性模型
@@ -711,7 +595,6 @@ summary(lm.D90)
 opar <- par(mfrow = c(2,2), oma = c(0, 0, 1.1, 0))
 plot(lm.D9, las = 1)      # Residuals, Fitted, ...
 par(opar)
-
 
 
 # Generalised linear model. 广义线性模型
@@ -744,7 +627,8 @@ summary(as.factor(lst))
 
 ```
 
-## Distributions 分布
+
+## 8.Distributions 分布
 
 +-----------+-----------+-----------+-------------------------+-----------+
 |           | Random    | Desity    | Cumulative Distribution | Quantile  |
@@ -760,7 +644,7 @@ summary(as.factor(lst))
 | Uniform   | runif     | dunif     | punif                   | qunif     |
 +-----------+-----------+-----------+-------------------------+-----------+
 
-## Plotting 制图
+## 9.Plotting 制图
 
 ```{r}
 x <- c(43:70)
@@ -768,7 +652,7 @@ plot(x)
 
 ```
 
-## ggplot2 Package
+## 10.ggplot2 Package
 
 ```{r}
 library(ggplot2)
@@ -778,3 +662,143 @@ y <- c(29:85)
 # 柱状图
 hist(x)
 ```
+
+
+## 11.编程
+
+### 11.1 For循环
+
+``` r
+for (var in sequnence){
+   Do command/operation
+}
+```
+
+Example
+
+```{r}
+for (i in 1:4){
+  j <- i + 10
+  print(j)
+}
+```
+
+### 11.2 While循环
+
+``` r
+while (condition){
+Do something
+}
+```
+
+Example
+
+```{r}
+for (i in 1:4){
+  while(i < 5){
+    print(i)
+    i <- i + 1
+  }
+}
+```
+
+### 11.3 If结构
+
+``` r
+if (condition){
+Do something
+} else {
+Do something different
+}
+```
+
+Examples
+
+```{r}
+for (i in 1:4){
+  if (i > 3){
+    print('Yes')
+  } else {
+    print('No')
+  }
+}
+```
+
+### 11.4 定义函数/功能
+
+``` r
+function_name <- function(var){
+Do something
+return(new_variable)
+}
+```
+
+Exanples
+
+```{r}
+# 定义一个名为square的函数 功能是平方
+square <- function(x){
+  squared <- x*x
+  return(squared)
+}
+
+for (i in 1:4){
+  print(square(i))
+}
+
+```
+
+## 12.读写数据 3种方法
+
+### 12.1 table
+
+```{r}
+# 先创建一个数据集
+df <- c(1:50)
+
+# table写数据
+write.table(df, 'file.txt')
+
+# table读数据
+db <- read.table('file.txt')
+db
+
+```
+
+### 12.2 csv
+
+```{r}
+df <- c(1:40)
+# 创建8行5列矩阵
+dim(df) <- c(8,5)
+df
+# 写入
+write.csv(df,'file.csv')
+
+# 读入
+da <- read.csv('file.csv')
+da
+
+```
+
+### 12.3 load 和 save
+
+```{r}
+
+df <- c(1:40)
+# 创建8行5列矩阵
+dim(df) <- c(8,5)
+
+df
+
+
+# 写入数据
+save(df, file = 'file.Rdata')
+# 载入数据
+load('file.RData')
+# df为载入后的矩阵名,可以直接
+df
+
+```
+
+
