@@ -1,16 +1,20 @@
-html {
-    background: #F5F5F5;
-}
+        /* 深色 */
+        /* background: #3a5a73; */
+        /* 浅色 */
+        /* background: #466b88; */
 
 body {
     margin: 0px;
     border: 0px;
+    /* background-image: url(./权杖.png), #F5F5F5; */
+    background-image: url(./权杖.png);
+    background-size: 100px 100px;
 }
 
 /* 适配500px以下设备 */
 @media screen and (max-width:500px) {
     #title p{
-        background-color: #336699;
+        background-color: #466b88;
         border-radius: 0.2em;
         text-shadow:1px 1px purple;
         margin: 0px;
@@ -21,11 +25,15 @@ body {
         padding: 20px;
         letter-spacing: 3px;
         font-weight: 1000;
+        user-select: none;
     }
 
     #box1,#box2{
         width: 120px;
         height: 120px;
+        border-radius: 10px;
+        box-shadow: gray 1px 2px 5px;
+        user-select: none;
     }
 
     #box1 {
@@ -46,6 +54,7 @@ body {
         margin: 230px 0px 0px -85px;
         font-size: 14px;
         overflow: hidden;
+        user-select: none;
     }
 
     #three {
@@ -54,6 +63,7 @@ body {
         margin: 230px -80px 0px 0px;
         font-family: "黑体";
         font-size: 14px;
+        user-select: none;
     }
 
     button {
@@ -63,6 +73,7 @@ body {
         letter-spacing: 0.5px;
         font-size: 12px;
         font-weight: 1000;
+        user-select: none;
     }
     
     #chose {
@@ -84,7 +95,7 @@ body {
 /* 适配501-750px设备 */
 @media screen and (min-width:501px) and (max-width:750px) {
     #title p{
-        background-color: #336699;
+        background-color: #466b88;
         border-radius: 0.2em;
         text-shadow:1px 1px purple;
         margin: 0px;
@@ -100,6 +111,9 @@ body {
     #box1,#box2{
         width: 150px;
         height: 150px;
+        border-radius: 10px;
+        box-shadow: gray 1px 2px 5px;
+        user-select: none;
     }
 
     #box1 {
@@ -120,6 +134,7 @@ body {
         margin: 250px 0px 0px -100px;
         font-size: 14px;
         overflow: hidden;
+        user-select: none;
     }
 
     #three {
@@ -128,6 +143,7 @@ body {
         margin: 250px -100px 0px 0px;
         font-family: "黑体";
         font-size: 14px;
+        user-select: none;
     }
 
     button {
@@ -137,6 +153,7 @@ body {
         letter-spacing: 0.5px;
         font-size: 12px;
         font-weight: 1000;
+        user-select: none;
     }
     
     #chose {
@@ -158,7 +175,7 @@ body {
 /* 适配751-799px设备 */
 @media screen and (min-width:751px) and (max-width:799px) {
     #title p{
-        background-color: #336699;
+        background-color: #466b88;
         border-radius: 0.2em;
         text-shadow:1px 1px purple;
         margin: 0px;
@@ -169,11 +186,15 @@ body {
         padding: 20px;
         letter-spacing: 8px;
         font-weight: 1000;
+        user-select: none;
     }
 
     #box1,#box2{
         width: 175px;
         height: 175px;
+        border-radius: 10px;
+        box-shadow: gray 1px 2px 5px;
+        user-select: none;
     }
 
     #box1 {
@@ -195,6 +216,7 @@ body {
         font-family: "黑体";
         font-size: 16px;
         position: relative;
+        user-select: none;
     }
 
     #three {
@@ -204,6 +226,7 @@ body {
         font-family: "黑体";
         font-size: 16px;
         position: relative;
+        user-select: none;
     }
 
     button {
@@ -213,6 +236,7 @@ body {
         letter-spacing: 0.5px;
         font-size: 17px;
         font-weight: 1000;
+        user-select: none;
     }
     
     #chose {
@@ -234,7 +258,7 @@ body {
 /* 适配800-1000px设备 */
 @media screen and (min-width:800px) and (max-width:1000px) {
     #title p{
-        background-color: #336699;
+        background-color: #466b88;
         border-radius: 0.2em;
         text-shadow:1px 1px purple;
         margin: 0px;
@@ -245,11 +269,15 @@ body {
         padding: 20px;
         letter-spacing: 8px;
         font-weight: 1000;
+        user-select: none;
     }
 
     #box1,#box2{
         width: 175px;
         height: 175px;
+        border-radius: 10px;
+        box-shadow: gray 1px 2px 5px;
+        user-select: none;
     }
 
     #box1 {
@@ -271,6 +299,7 @@ body {
         font-family: "黑体";
         font-size: 16px;
         position: relative;
+        user-select: none;
     }
 
     #three {
@@ -280,6 +309,7 @@ body {
         font-family: "黑体";
         font-size: 16px;
         position: relative;
+        user-select: none;
     }
 
     button {
@@ -289,6 +319,7 @@ body {
         letter-spacing: 0.5px;
         font-size: 17px;
         font-weight: 1000;
+        user-select: none;
     }
     
     #chose {
@@ -310,21 +341,26 @@ body {
 /* 适配1000px以上的设备 */
 @media screen and (min-width:1001px) {
     #title p{
-        background-color: #336699;
-        border-radius: 0.2em;
+        background-color: #466b88;
+        /* border-radius: 0.2em; */
         text-shadow:1px 1px purple;
         margin: 0px;
         font-family: "Microsoft Yahei";
-        font-size: 1.5em;
+        font-size: 36px;
         font-stretch: ultra-expanded;
         text-align: center;
         padding: 20px;
         letter-spacing: 10px;
+        font-weight: 1000;
+        user-select: none;
     }
 
     #box1,#box2{
         width: 175px;
         height: 175px;
+        border-radius: 10px;
+        box-shadow: gray 1px 2px 5px;
+        user-select: none;
     }
 
     #box1 {
@@ -345,6 +381,7 @@ body {
         font-family: "黑体";
         font-size: large;
         position: relative;
+        user-select: none;
     }
 
     #three {
@@ -354,6 +391,7 @@ body {
         font-family: "黑体";
         font-size: large;
         position: relative;
+        user-select: none;
     }
 
     button {
@@ -363,6 +401,7 @@ body {
         letter-spacing: 4px;
         font-size: large;
         font-weight: 1000;
+        user-select: none;
     }
     
     #chose {
@@ -381,4 +420,11 @@ body {
     
 }
 
+.footer{
+    width: 100%;
+    height: 20px;
+    background: #3a5a73;
+    position: fixed;
+    bottom: 0;
+}
 
