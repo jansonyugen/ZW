@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="todo-app">
+        <div class="title">xxx的Todo App</div>
+        <div class="todo-form">
+            <input class="todo-input" type="text" placeholder="add a todo">
+            <div class="todo-button">add todo</div>
+        </div>
+        <!-- “双”类名 中间空格隔开-->
+        <div class="item completed">
+            <div>
+                <input type="checkbox" />
+                <span class="name">吃饭</span>
+            </div>
+
+            <div class="del">del</div>
+        </div>
+        <div class="item">
+            <div>
+                <input type="checkbox" />
+                <span class="name">吃饭</span>
+            </div>
+
+            <div class="del">del</div>
+        </div>
+        <div class="item">
+            <div>
+                <input type="checkbox" />
+                <span class="name">吃饭</span>
+            </div>
+
+            <div class="del">del</div>
+        </div>
+    </div>
+</body>
+<style>
+    /* 从左往右的渐变色背景 */
+    body {
+        /* 渐变色linear-gradient */
+        background: linear-gradient(to right,purple,blue);
+        /* 深色 */
+        /* background: #3a5a73; */
+        /* 浅色 */
+        /* background: #466b88; */
+        border-radius: 30px;
+    }
+    .completed{
+        text-decoration: line-through;
+        opacity: 0.4;
+    }
+    .del{
+        color: red;
+    }
+    .item{
+        display: flex;
+        /* 垂直向 stretch延伸对齐，居中对齐 */
+        align-items: center;
+        /* start左对齐，end右对齐，center居中对齐，space-between两端对齐， space-around环绕对齐，space-evenly平均对齐*/
+        justify-content: space-between;
+
+        box-sizing: border-box;
+        width: 80%;
+        height: 50px;
+        /* 上下8px，左右自适应 */
+        margin: 8px auto;
+        padding: 16px;
+        border-radius: 20px;
+        border-radius: 20px;
+        /*  X 轴偏移量、Y 轴偏移量、模糊半径、扩散半径和颜色 */
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 20px;
+
+    }
+    .todo-input{
+        /* 宽度，类型，颜色 */
+        border: 1px solid #dfe1e5;
+        outline: none;
+        width: 60%;
+        height: 50px;
+        /* 1234顺时针四角，输入一个值四角即为相同 */
+        border-radius: 20px 0 0 20px;
+
+        padding-left: 15px;
+
+        margin-bottom: 20px;
+    }
+
+    .todo-button{
+        /* 宽度，类型，颜色 */
+        width: 100px;
+        height: 52px;
+        /* 1234顺时针四角，输入一个值四角即为相同 */
+        border-radius: 0 20px 20px 0;
+        /* 字体设置行高，就会自动垂直居中 */
+        line-height: 50px;
+        text-align: center;
+        background: linear-gradient(
+            to right,
+            rgb(113,65,168),
+            rgba(44,114,251,1)
+        );
+        /* 鼠标悬停显示鼠标手指 */
+        cursor: pointer;
+        /* 关闭文字可复制 */
+        user-select: none;
+        color: #ffff;
+    }
+
+    .todo-form{
+        display: flex;
+        margin-top: 20px;
+        margin-left: 30px;
+    }
+    /* 元素排列 从左往右，自上而下，从外往内 */
+
+    .todo-app{
+        width: 98%;
+        height: 500px;
+        padding-top: 30px;
+        box-sizing: border-box;
+        background-color: #ffff;
+        /* 圆角 */
+        border-radius: 5px;
+        margin-top: 40px;
+        margin-left: 1%;
+    }
+
+    .title{
+        font-size: 30px;
+        font-weight: 700;
+        text-align: center;
+    }
+</style>
+</html>
