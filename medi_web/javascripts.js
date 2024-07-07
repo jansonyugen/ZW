@@ -12,7 +12,7 @@ function generateRandomNumber() {
 document.getElementById('bt').addEventListener('click', function() {  
     if (!isRunning) {  
         // 开始滚动随机数  
-        intervalId = setInterval(generateRandomNumber, 60); // 每60毫秒更新一次  
+        intervalId = setInterval(generateRandomNumber, 90); // 每90毫秒更新一次  
         isRunning = true;  
         this.textContent = '结束抽题';  
     } else {  
