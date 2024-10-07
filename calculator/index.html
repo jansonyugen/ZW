@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Styles/style.css">
+    <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Version 1.0</title>
+</head>
+<body>
+    <div class="bd">
+        <div class="bt">
+            <h1>计 算 转 换</h1>
+        </div>
+
+        <!-- 头部区域 -->
+        <div class="headings">
+            <div class="face">
+                <div class="face_change">皮肤切换：</div>
+                <div class="day_night">日/夜</div>
+            </div>
+
+            <!-- 计量单位切换 -->
+             <div class="change_unit">
+                单位切换：
+                <div class="kilograms">
+                    <a href="#" id="kg">千克/kg</a>
+                </div>
+
+                <div class="grams">
+                    <a href="#" id="g">克/g</a>
+                </div>
+             </div>
+        </div>
+
+        <!-- 输入区域 -->
+        <div class="input_area">
+            <div class="product_num">
+                <div class="p_n">
+                    产品数量
+                </div>
+                <input type="text" class="ty" id="p_n">
+                <div class="bottle">瓶/盒</div>
+            </div>
+
+            <div class="per_weight">
+                <div class="p_w">
+                    每瓶重量
+                </div>
+                <input type="text" class="ty" id="p_w">
+                <div class="unit">克/g</div>
+            </div>
+
+            <div class="get_weight">
+                <div class="g_w">
+                    领料数量
+                </div>
+                <input type="text" class="ty" id="g_w">
+                <div class="unit">克/g</div>
+            </div>
+
+            <div class="return_weight">
+                <div class="r_w">
+                    退料数量
+                </div>
+                <input type="text" class="ty" id="r_w">
+                <div class="unit">克/g</div>
+            </div>
+
+            <div class="impurity_weight">
+                <div class="i_w">
+                    杂质数量
+                </div>
+                <input type="text" class="ty" id="i_w">
+                <div class="unit">克/g</div>
+            </div>
+
+            <!-- 功能键 -->
+            <div class="button">
+                <input type="button" id="bt1" value="计算结果">
+                <input type="button" id="bt2" value="重置" onclick="refreash()">
+            </div>
+            
+        </div>
+
+        <!-- 输出区域 -->
+         <div class="output">
+            <div class="change_result" style="text-align: center;">
+                <input type="button" id="bt3" value="切换结果单位">
+            </div>
+            <div class="tt">
+                <h3>得 率</h3>
+            </div>
+            <table>  
+                <tr><th>实际生产数量</th><td id="yield"></td></tr>  
+                <tr><th>领料数量</th><td id="material_received"></td></tr>  
+                <tr><th>退料数量</th><td id="material_returned"></td></tr>  
+                <tr><th>退料</th><td id="returned"></td></tr>  
+                <tr><th>损耗</th><td id="waste"></td></tr>  
+                <tr><th>得率</th><td id="yield_percentage"></td></tr>  
+            </table>  
+            <div>
+                <br>
+            </div>
+
+            <div class="tt">
+                <h3>物 料 平 衡</h3>
+            </div>
+
+            <table>  
+                <tr><th>成品数量</th><td id="yield1"></td></tr>    
+                <tr><th>退料数量</th><td id="material_returned1"></td></tr>  
+                <tr><th>杂质数量</th><td id="flaw"></td></tr>   
+                <tr><th>物料平衡</th><td id="material_balance"></td></tr>  
+            </table>  
+
+         </div>
+    </div>
+</body>
+
+<footer>
+    <div class="foot">
+        <div class="announcement">联系方式:1933832279@qq.com</div>
+        <div class="copyright">&copy; 2024 Calculator V1.0 By YG. All rights reserved.</div>
+    </div>
+</footer>
+<script src="Scripts/javascript.js"></script>
+</html>

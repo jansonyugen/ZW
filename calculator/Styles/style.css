@@ -1,0 +1,620 @@
+body {
+    margin: 0px;
+    border: 0px;
+    background-size: 100px 100px;
+    background-color: #FFFFFF;
+}
+
+
+/* 适配500px以下设备 */
+@media screen and (max-width:500px) {
+    /* body */
+    .bd {
+        box-sizing: border-box;
+    }
+
+    /* 头部区域 */
+    .bt {
+        text-align: center;
+    }
+
+    .headings {
+        position: relative;
+        width: 470px;
+    }
+
+    .face {
+        position: relative;
+        display: flex;
+        padding-left: 60%;
+        /* margin-left: 70%; */
+    }
+
+    .day_night {
+        display: flex;
+    }
+
+    /* 计量单位切换 */
+    .change_unit {
+        display: flex;
+        position: relative;
+        width: 280px;
+        left: 45%;
+        margin: 20px 0px;
+        
+    }
+
+    .kilograms, .grams {
+        margin: auto 10px;
+        text-decoration: none;
+    }
+
+    .kg, .g {
+        text-decoration: none;
+        color: darkcyan;
+        border:2px solid blue;
+        border-radius: 5px;
+    }
+    
+
+
+    /* 输入区域 */
+    .product_num,
+    .per_weight,
+    .get_weight,
+    .return_weight,
+    .impurity_weight {
+        display: flex;
+        width: auto;
+        height: auto;
+        margin: 10px auto;
+    }
+
+    .p_n, .p_w, .g_w, .r_w, .i_w {
+        display: flex;
+        position: relative;
+        right: 30px;
+        width: 80px;
+    }
+
+    .ty {
+        width: 25%;
+        outline: none;
+        border: 1px solid #dfe1e5;
+        border-radius: 6px 0px 0px 6px;
+        padding-left: 10px;
+    }
+
+    .input_area {
+        position: relative;
+        margin: 5px auto;
+        left: 24%;
+    }
+
+    .button {
+        position: relative;
+        left: 24%;
+        margin-top: 30px;
+    }
+
+    #bt1 {
+        position: relative;
+        right: 20px;
+    }
+
+    #bt2 {
+        position: relative;
+        left: 10px;
+    }
+
+
+    .tt {
+        text-align: center;
+    }
+    
+    
+    table {  
+        width: 80%;  
+        margin: 0 auto;  
+        border-collapse: collapse;  
+    }  
+    th, td {  
+        border: 1px solid black;  
+        text-align: center;  
+        padding: 10px;  
+    }  
+
+
+    .foot {
+        color: #151515;
+        font-size: smaller;
+        position: relative;
+        margin-top: 17.5%;
+        text-align: center;
+        user-select: none;
+    }
+
+}
+
+
+/* 适配501-750px设备 非此设备*/
+@media screen and (min-width:501px) and (max-width:750px) {
+    /* body */
+    .bd {
+        box-sizing: border-box;
+    }
+
+    /* 头部区域 */
+    .bt {
+        text-align: center;
+    }
+
+    .h1 {
+        text-align: center;
+    }
+
+    .headings {
+        position: relative;
+    }
+
+    .face {
+        position: relative;
+        display: flex;
+        margin-left: 88%;
+
+    }
+
+    .day_night {
+        /* position: absolute; */
+        display: flex;
+    }
+
+    /* 计量单位切换 */
+    .change_unit {
+        display: flex;
+        position: relative;
+        width: 400px;
+        left: 45%;
+        margin: 20px 0px;
+        
+    }
+
+    .kilograms, .grams {
+        margin: auto 10px;
+        text-decoration: none;
+    }
+
+    .kg, .g {
+        text-decoration: none;
+        color: darkcyan;
+        border:2px solid blue;
+        border-radius: 5px;
+    }
+    
+
+
+    /* 输入区域 */
+    .product_num,
+    .per_weight,
+    .get_weight,
+    .return_weight,
+    .impurity_weight {
+        display: flex;
+        width: 50%;
+        margin: 10px auto;
+    }
+
+    .ty {
+        /* width: 50px;
+        height: 20px; */
+        /* margin: 5px; */
+        outline: none;
+        border: 1px solid #dfe1e5;
+        border-radius: 6px 0px 0px 6px;
+        padding-left: 10px;
+    }
+
+    .input_area {
+        /* display: flex; */
+        width: 50%;
+        margin: 5pt auto;
+    }
+
+    .button {
+        position: relative;
+        left: 270px;
+        margin-top: 20px;
+    }
+
+    #bt1 {
+        position: relative;
+        right: 20px;
+    }
+
+    #bt2 {
+        position: relative;
+        left: 10px;
+    }
+
+
+    
+    .foot {
+        color: #151515;
+        font-size: smaller;
+        position: relative;
+        margin-top: 17.5%;
+        text-align: center;
+        user-select: none;
+    }
+
+}
+
+
+/* 适配751-799px设备 非此*/
+@media screen and (min-width:751px) and (max-width:799px) {
+    /* body */
+    .bd {
+        box-sizing: border-box;
+    }
+
+    /* 头部区域 */
+    .bt {
+        text-align: center;
+    }
+
+    .headings {
+        position: relative;
+    }
+
+    .face {
+        position: relative;
+        display: flex;
+        margin-left: 88%;
+
+    }
+
+    .day_night {
+        /* position: absolute; */
+        display: flex;
+    }
+
+    /* 计量单位切换 */
+    .change_unit {
+        display: flex;
+        position: relative;
+        width: 400px;
+        left: 45%;
+        margin: 20px 0px;
+        
+    }
+
+    .kilograms, .grams {
+        margin: auto 10px;
+        text-decoration: none;
+    }
+
+    .kg, .g {
+        text-decoration: none;
+        color: darkcyan;
+        border:2px solid blue;
+        border-radius: 5px;
+    }
+    
+
+
+    /* 输入区域 */
+    .product_num,
+    .per_weight,
+    .get_weight,
+    .return_weight,
+    .impurity_weight {
+        display: flex;
+        width: 50%;
+        margin: 10px auto;
+    }
+
+    .ty {
+        /* width: 50px;
+        height: 20px; */
+        /* margin: 5px; */
+        outline: none;
+        border: 1px solid #dfe1e5;
+        border-radius: 6px 0px 0px 6px;
+        padding-left: 10px;
+    }
+
+    .input_area {
+        /* display: flex; */
+        width: 50%;
+        margin: 5pt auto;
+    }
+
+    .button {
+        position: relative;
+        left: 270px;
+        margin-top: 20px;
+    }
+
+    #bt1 {
+        position: relative;
+        right: 20px;
+    }
+
+    #bt2 {
+        position: relative;
+        left: 10px;
+    }
+
+
+    
+    .foot {
+        color: #151515;
+        font-size: smaller;
+        position: relative;
+        margin-top: 17.5%;
+        text-align: center;
+        user-select: none;
+    }
+}
+
+
+/* 适配800-1000px设备 小米手机非此*/
+@media screen and (min-width:800px) and (max-width:1000px) {
+    /* body */
+    .bd {
+        box-sizing: border-box;
+    }
+
+    /* 头部区域 */
+    .bt {
+        text-align: center;
+    }
+
+    .headings {
+        position: relative;
+    }
+
+    .face {
+        position: relative;
+        display: flex;
+        margin-left: 88%;
+
+    }
+
+    .day_night {
+        /* position: absolute; */
+        display: flex;
+    }
+
+    /* 计量单位切换 */
+    .change_unit {
+        display: flex;
+        position: relative;
+        width: 400px;
+        left: 45%;
+        margin: 20px 0px;
+        
+    }
+
+    .kilograms, .grams {
+        margin: auto 10px;
+        text-decoration: none;
+    }
+
+    .kg, .g {
+        text-decoration: none;
+        color: darkcyan;
+        border:2px solid blue;
+        border-radius: 5px;
+    }
+    
+
+
+    /* 输入区域 */
+    .product_num,
+    .per_weight,
+    .get_weight,
+    .return_weight,
+    .impurity_weight {
+        display: flex;
+        width: 50%;
+        margin: 10px auto;
+    }
+
+    .ty {
+        /* width: 50px;
+        height: 20px; */
+        /* margin: 5px; */
+        outline: none;
+        border: 1px solid #dfe1e5;
+        border-radius: 6px 0px 0px 6px;
+        padding-left: 10px;
+    }
+
+    .input_area {
+        /* display: flex; */
+        width: 50%;
+        margin: 5pt auto;
+    }
+
+    .button {
+        position: relative;
+        left: 270px;
+        margin-top: 20px;
+    }
+
+    #bt1 {
+        position: relative;
+        right: 20px;
+    }
+
+    #bt2 {
+        position: relative;
+        left: 10px;
+    }
+
+
+    
+    .foot {
+        color: #151515;
+        font-size: smaller;
+        position: relative;
+        margin-top: 17.5%;
+        text-align: center;
+        user-select: none;
+    }
+
+
+
+}
+
+
+/* 适配1000px以上的设备 */
+@media screen and (min-width:1001px) {
+    /* body */
+    .bd {
+        box-sizing: border-box;
+    }
+
+    /* 头部区域 */
+    .bt {
+        text-align: center;
+    }
+
+    .headings {
+        position: relative;
+    }
+
+    .face {
+        position: relative;
+        display: flex;
+        margin-left: 88%;
+
+    }
+
+    .day_night {
+        /* position: absolute; */
+        display: flex;
+    }
+
+    /* 计量单位切换 */
+    .change_unit {
+        display: flex;
+        position: relative;
+        width: 400px;
+        left: 45%;
+        margin: 20px 0px;
+        
+    }
+
+    .kilograms, .grams {
+        margin: auto 10px;
+        text-decoration: none;
+    }
+
+    .kg, .g {
+        text-decoration: none;
+        color: darkcyan;
+        border:2px solid blue;
+        border-radius: 5px;
+    }
+    
+
+
+    /* 输入区域 */
+    .product_num,
+    .per_weight,
+    .get_weight,
+    .return_weight,
+    .impurity_weight {
+        display: flex;
+        width: 50%;
+        margin: 10px auto;
+    }
+
+    .ty {
+        /* width: 50px;
+        height: 20px; */
+        /* margin: 5px; */
+        outline: none;
+        border: 1px solid #dfe1e5;
+        border-radius: 6px 0px 0px 6px;
+        padding-left: 10px;
+    }
+
+    .input_area {
+        /* display: flex; */
+        width: 50%;
+        margin: 5pt auto;
+    }
+
+    .button {
+        position: relative;
+        left: 270px;
+        margin-top: 20px;
+    }
+
+    #bt1 {
+        position: relative;
+        right: 20px;
+    }
+
+    #bt2 {
+        position: relative;
+        left: 10px;
+    }
+
+
+    
+    .foot {
+        color: #151515;
+        font-size: smaller;
+        position: relative;
+        margin-top: 17.5%;
+        text-align: center;
+        user-select: none;
+    }
+
+
+    .tt {
+        text-align: center;
+    }
+    
+    
+    table {  
+        width: 50%;  
+        margin: 0 auto;  
+        border-collapse: collapse;  
+    }  
+    th, td {  
+        border: 1px solid black;  
+        text-align: center;  
+        padding: 10px;  
+    }  
+}
+
+
+/* .tt {
+    text-align: center;
+}
+
+
+table {  
+    width: 50%;  
+    margin: 0 auto;  
+    border-collapse: collapse;  
+}  
+th, td {  
+    border: 1px solid black;  
+    text-align: center;  
+    padding: 10px;  
+}   */
+
+.foot {
+    color: #151515;
+    font-size: smaller;
+    position: relative;
+    margin-top: 17.5%;
+    text-align: center;
+    user-select: none;
+}
